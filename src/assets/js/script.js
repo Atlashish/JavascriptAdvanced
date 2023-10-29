@@ -71,7 +71,7 @@ function searchBooksByGenre(genre) {
                     bookPlace.appendChild(bookAuthor);
 
                     // Adding event listener to show book description on click
-                    bookPlace.addEventListener("click", () => {
+                    bookImage.addEventListener("click", () => {
                         getBookDescription(work.key);
                     })
                 });
