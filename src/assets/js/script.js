@@ -28,7 +28,7 @@ function searchBooksByGenre(genre) {
         .then((response) => {
             
             if (response.ok) {       
-                      // Displaying book grid and hiding unnecessary elements
+                // Displaying book grid and hiding unnecessary elements
                 displayBookGrid();
                 return response.json();
             } else {
@@ -103,11 +103,13 @@ function failedResults(genre){
 }
 
 
+
 // Function to get the description of a specific book
 function getBookDescription(bookKey) {
     const apiUrl = `https://openlibrary.org${bookKey}.json`;
 
-    showLoader2(); // Mostra il loader prima di avviare la richiesta
+    // Show the loader before starting the request
+    showLoader2(); 
 
     // Fetching book details based on the key
     fetch(apiUrl)
@@ -141,21 +143,21 @@ closeModal.addEventListener("click", () => {
 });
 
 
-// Funzione per mostrare il loader e disabilitare l'interazione dell'utente
+// Function to show the loader and disable user interaction
 function showLoader2() {
     const loader = document.getElementById('loader2');
     loader.style.display = 'block';
     disableUserInteraction(true);
   }
   
-  // Funzione per nascondere il loader e riabilitare l'interazione dell'utente
+  // Function to hide the loader and re-enable user interaction
   function hideLoader2() {
     const loader = document.getElementById('loader2');
     loader.style.display = 'none';
     disableUserInteraction(false);
   }
   
-  // Funizzazione per disabilitare/abilitare l'interazione dell'utente con la pagina
+  // Function to disable/enable user interaction with the page
   function disableUserInteraction(disable) {
     const body = document.querySelector('body');
     body.style.pointerEvents = disable ? 'none' : 'auto';
