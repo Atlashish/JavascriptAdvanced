@@ -168,7 +168,7 @@ function showLoader2() {
 
 // Event listener to perform a book search based on the genre
 srcButton.addEventListener("click", () => {
-        for (let i = 1; i < limit; i++) {
+        for (let i = 1; i <= limit; i++) {
             const bookPlace = document.getElementById(`book${i}`);
             bookPlace.textContent = null;
             bookPlace.style.background = null;
