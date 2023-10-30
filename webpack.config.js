@@ -47,7 +47,9 @@ module.exports = {
       title: "Applicazione webpack", // Titolo della pagina HTML generata
       template: "./src/index.html", // Percorso del file HTML template
     }),
-    new FaviconsWebpackPlugin("./src/assets/img/favicon-16x16.png"),
+    new FaviconsWebpackPlugin({
+      logo: "./src/assets/img/bookCartoon.png",
+    }),
   ],
   // Configurazioni del server di sviluppo
   devServer: {
