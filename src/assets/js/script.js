@@ -2,6 +2,7 @@ import '../css/styles.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../img/bookCartoon.png';
+import _ from 'lodash';
 
 // Selecting necessary elements from the DOM
 const loader = document.querySelector(".loader");
@@ -36,20 +37,20 @@ function searchBooksByGenre(genre) {
             }
         })
         .then((data) => {
-            const works = data.works;
+            const works = _.get(data, 'works', []);
 
             if (works && works.length > 0) {
                 resultsContainer.innerHTML = `<h2>Results for category '${genre}':</h2>`;
 
                 // Looping through the retrieved book data
                 works.forEach((work, index) => {
-                    const title = work.title;
-                    const coverId = work.cover_id;
-                    const coverUrl = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`;
-                    const author = work.authors[0].name;
-                    const bookPlace = document.getElementById(`book${index + 1}`);
-                    bookPlace.style.background = "#d24f0d";
-                    bookPlace.classList.remove("transparent");
+                    const title = _.get(work, 'title', '');
+                const coverId = _.get(work, 'cover_id', '');
+                const coverUrl = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`;
+                const author = _.get(work, 'authors[0].name', '');
+                const bookPlace = document.getElementById(`book${index + 1}`);
+                bookPlace.style.background = "#d24f0d";
+                bookPlace.classList.remove("transparent");
 
                     // Creating elements to display book details
                     const bookImage = document.createElement("img");
@@ -72,7 +73,7 @@ function searchBooksByGenre(genre) {
 
                     // Adding event listener to show book description on click
                     bookImage.addEventListener("click", () => {
-                        getBookDescription(work.key);
+                        getBookDescription(_.get(work, 'key', ''));
                     })
                 });
             } else {

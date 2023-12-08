@@ -51,6 +51,7 @@ module.exports = {
       logo: "./src/assets/img/bookCartoon.png",
     }),
   ],
+
   // Configurazioni del server di sviluppo
   devServer: {
     port: 5000, // Porta su cui il server di sviluppo sarà in ascolto
